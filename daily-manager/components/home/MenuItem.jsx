@@ -2,11 +2,10 @@ import { Ionicons } from "@expo/vector-icons";
 import { Pressable, Text, View, StyleSheet, Platform } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-const MenuItem = ({ id, title, color, icon, screen }) => {
+const MenuItem = ({ title, color, icon, screen }) => {
   const navigation = useNavigation();
 
   const handlePress = () => {
-    console.log(screen);
     navigation.navigate(screen);
   };
 
