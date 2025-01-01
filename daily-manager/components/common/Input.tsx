@@ -37,7 +37,7 @@ const Input = <T extends FieldValues>({
     <Controller
       control={control}
       rules={{ required: required }}
-      render={({ field: { onChange, value } }) => (
+      render={({ field: { onChange, onBlur, value } }) => (
         <View style={styles.formGroup}>
           <View>
             <Text style={styles.label}>{label}</Text>
@@ -46,7 +46,8 @@ const Input = <T extends FieldValues>({
             placeholder={label}
             keyboardType={keyboardType || "default"}
             style={styles.input}
-            onChange={onChange}
+            onChangeText={onChange}
+            onBlur={onBlur}
             value={value}
           />
           {error && <Text style={styles.error}>This field is required</Text>}
