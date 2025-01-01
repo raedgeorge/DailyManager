@@ -8,6 +8,9 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import { Ionicons } from "@expo/vector-icons";
 import HolidayListScreen from "./screens/holidays/HolidayListScreen";
 import AddHolidayScreen from "./screens/holidays/AddHolidayScreen";
+import { useEffect, useState } from "react";
+import AppLoading from "expo-app-loading";
+import { init } from "./database/db";
 
 const NativeStack = createNativeStackNavigator();
 
@@ -70,6 +73,21 @@ const TabNavigator = () => {
 };
 
 export default function App() {
+  const [dbInitialized, setDbInitialized] = useState(false);
+
+  useEffect(() => {
+    init()
+      .then(() => {
+        setDbInitialized(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  if (!dbInitialized) {
+    return <AppLoading />;
+  }
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.header}>Daily Manager</Text>

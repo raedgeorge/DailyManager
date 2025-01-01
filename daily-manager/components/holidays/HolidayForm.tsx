@@ -3,6 +3,7 @@ import Input from "../common/Input";
 import Button from "../common/Button";
 import { HolidayModel } from "../../models/holiday-model";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { insertHoliday } from "../../database/db";
 
 const HolidayForm = () => {
   const {
@@ -13,6 +14,9 @@ const HolidayForm = () => {
 
   const formSubmitHandler: SubmitHandler<HolidayModel> = (payload) => {
     console.log(payload);
+    insertHoliday(payload)
+      .then((res) => console.log(res))
+      .catch((err) => console.log("error: " + err));
   };
 
   return (
