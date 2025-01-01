@@ -8,8 +8,9 @@ const Home = () => {
       <MenuItem
         id={item.id}
         title={item.title}
-        color={item.color}
         icon={item.icon}
+        color={item.color}
+        screen={item.targetScreen}
       />
     );
   };
@@ -32,6 +33,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: "20%",
+    marginTop: "35%",
   },
 });

@@ -1,10 +1,19 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Pressable, Text, View, StyleSheet, Platform } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-const MenuItem = ({ id, title, color, icon }) => {
+const MenuItem = ({ id, title, color, icon, screen }) => {
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    console.log(screen);
+    navigation.navigate(screen);
+  };
+
   return (
     <View style={[styles.gridItem, { backgroundColor: color }]}>
       <Pressable
+        onPress={handlePress}
         android_ripple={{ color: "#B7D1DA" }}
         style={({ pressed }) => [
           styles.button,
